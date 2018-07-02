@@ -128,7 +128,7 @@ Copie o artefato e os arquivos de dado para o mesmo diretório:
     |__NASA_access_log_Aug95.gz
   ```
 
-Envie a aplicação para o cluster Spark local utilizando o script `bin/spark-submit`(localizado no diretório de instalação do Spark), passando como parâmetro o artefato o diretório dos arquivos:
+Envie a aplicação para o cluster Spark local utilizando o script `bin/spark-submit`(localizado no diretório de instalação do Spark), passando como parâmetro o artefato e o diretório dos arquivos:
 
   ```
   $ spark-submit \
