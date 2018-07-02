@@ -9,7 +9,7 @@ import scala.util.Failure
 
 object SparkChallengeApp extends App{
   val inputFile = if(args.isEmpty) "./NASA_access_log_*" else args(0)
-print(inputFile)
+
   Runner.run(inputFile)
 }
 
@@ -29,10 +29,10 @@ object Runner {
     try {
       val rdd = spark.sparkContext.textFile(inputFile)
 
-      // using core API with RDD
+      // usando core API com RDD
       SparkChallengeCore.process(rdd, pw)
 
-      // using SQL API with Dataset
+      // usando SQL API com Dataset
       SparkChallengeWithSQL.process(rdd, spark, pw)
     } catch {
       case ex: Exception => {
