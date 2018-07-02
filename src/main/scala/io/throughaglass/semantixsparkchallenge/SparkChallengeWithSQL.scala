@@ -38,9 +38,9 @@ object SparkChallengeWithSQL {
   }
 
   def process(rdd: RDD[String], spark: SparkSession, pw: PrintWriter) = {
+    println("\n===================================Start SQL API with Dataset===================================")
+    pw.write("\n===================================Start SQL API with Dataset===================================")
     val startTime = System.currentTimeMillis
-
-    val pw = new PrintWriter(new File("resultados-sql.txt" ), "UTF-8")
 
     val httpData = rdd.map(mapToHttpData)
 
@@ -90,6 +90,9 @@ object SparkChallengeWithSQL {
     val totalTime = System.currentTimeMillis - startTime
     println("\nTempo total: %1d ms".format(totalTime))
     pw.write("\n\nTempo total: %1d ms".format(totalTime))
+
+    println("\n===================================End SQL API with Dataset===================================")
+    pw.write("\n===================================End SQL API with Dataset===================================")
   }
 
   def getUniqueHosts(ds: Dataset[HttpData]) = {

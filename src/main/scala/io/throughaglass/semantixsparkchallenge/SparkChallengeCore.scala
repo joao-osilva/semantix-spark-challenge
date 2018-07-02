@@ -6,6 +6,8 @@ import org.apache.spark.rdd._
 
 object SparkChallengeCore {
   def process(rdd: RDD[String], pw: PrintWriter) = {
+    println("\n===================================Start Core API with RDD===================================")
+    pw.write("\n===================================Start Core API with RDD===================================")
     val startTime = System.currentTimeMillis
 
     // Número​ ​de​ ​hosts​ ​únicos
@@ -50,6 +52,9 @@ object SparkChallengeCore {
     val totalTime = System.currentTimeMillis - startTime
     println("\nTempo total: %1d ms".format(totalTime))
     pw.write("\n\nTempo total: %1d ms".format(totalTime))
+
+    println("\n===================================End Core API with RDD===================================")
+    pw.write("\n===================================End Core API with RDD===================================")
   }
 
   def getUniqueHosts(rdd: RDD[String]) = {

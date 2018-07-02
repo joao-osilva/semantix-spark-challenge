@@ -61,7 +61,8 @@ Descrição do código:
 
 A solução foi desenvolvida utilizando:
   - Scala 2.11.8
-  - Apache Spark 2.1.1
+  - Apache Spark 2.3.1
+  - Sbt 1.1.6
 
 Portanto para executa-lá é necessário instalar:
   - **Java**
@@ -103,30 +104,40 @@ Faça o download dos arquivos com os dados que serão utilizados:
 
 Clone o repositório
 
-  `$ git clone https://github.com/joao-osilva/semantix-challenge.git`
+  `$ git clone https://github.com/joao-osilva/semantix-spark-challenge.git`
 
 Vá até o diretório criado:
 
-  `$ cd semantix-challenge`
+  `$ cd semantix-spark-challenge`
 
-Execute o sbt e compile:
+Compile e construa o artefato:
 
-  `$ sbt`
+  `$ sbt compile assembly`
 
-  `sbt:semantix-challenge> compile`
+Ele será gerado em `target/scala-2.11/semantix-spark-challenge-assembly-x.x.jar`
 
 ## Execute
 
-Execute o programa passando como parâmetro a localização dos arquivos de dado:
+Copie o artefato e os arquivos de dado para o mesmo diretório:
 
-  `sbt:semantix-challenge> run /Users/joao-macbook/Documents/NASA_access_log_*`
+  ```
+    /home/temp
+    _
+    |__semantix-spark-challenge-assembly-x.x.jar
+    |__NASA_access_log_Jul95.gz
+    |__NASA_access_log_Aug95.gz
+  ```
+
+Envie a aplicação para o cluster Spark local utilizando o script `bin/spark-submit`(localizado no diretório de instalação do Spark), passando como parâmetro o artefato o diretório dos arquivos:
+
+  ```
+  $ spark-submit \
+     semantix-spark-challenge-assembly-x.x.jar \
+     "/home/temp/NASA_access_log_*"
+  ```  
 
 Observações
   - Utilize o "*" no final do caminho para ler todos os arquivos no diretório
   - Caso nenhum parâmetro seja informado, o programa irá buscar no caminho relativo arquivos com o prefixo "*NASA_access_log_*"
-
-Para sair do sbt:
-
-  `sbt:semantix-challenge> exit`
 
 Os resultados da execução podem ser encontrados no arquivo `resultados.txt`
