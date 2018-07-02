@@ -1,4 +1,4 @@
-# semantix-challenge
+# Semantix Spark Challenge
 
 ## Questões
 #### 1. Qual​ ​o​ ​objetivo​ ​do​ ​comando​ ​​cache​ ​​em​ ​Spark?
